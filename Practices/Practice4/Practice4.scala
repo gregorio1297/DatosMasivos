@@ -1,10 +1,7 @@
-# Practice 4 - Unit 1
+//Dado el pseudocódigo de la sucesión de Fibonacci en el enlace proporcionado, implementar con Scala el Algoritmo 1, Algoritmo 2, Algoritmo 3, Algoritmo 4, Algoritmo 5
 
-## Implements the 5 algorithms for Fibonacci Succession
+//Algoritmo 1 Versión recursiva descendente
 
-### Algorithm 1 Top-down recursive version
-
-```scala
 def fibonacci(n:Int): Int = {
     if (n<2){
         return n
@@ -13,11 +10,9 @@ def fibonacci(n:Int): Int = {
         return (fibonacci(n-1) + fibonacci(n-2))
     }
 }
-```
 
-### Algorithm 2 Explicit formula version
+//Algoritmo 2 Versión con fórmula explícita
 
-```scala
 var p: Double = 0
 var j: Double = 0
  
@@ -31,11 +26,9 @@ def fibonacci2(n: Double): Double = {
         return j
     }
 }
-```
 
-### Algorithm 3 Iterative version
+//Algoritmo 3 Versión iterativa
 
-```scala
 def fibonacci3(n3: Int):Int ={
   var a = 0
   var b = 1
@@ -47,4 +40,4 @@ def fibonacci3(n3: Int):Int ={
   }
   return a
 }
-```
+
