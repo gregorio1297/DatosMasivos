@@ -48,3 +48,33 @@ def fibonacci3(n3: Int):Int ={
   return a
 }
 ```
+
+### Algorithm 4 Iterative with 2 variables
+```scala
+def fibonacci4(n: Int): Int = {
+  var a = 0;
+  var b = 1;
+  for(k <- Range(0, n)) {
+    b = b + a;
+    a = b - a;
+  }
+  return b;
+}
+```
+
+### Algorithm 5 Iterative 
+```scala
+def fibonacci5(n: Int): Int = {
+  if(n < 2) {
+    return n;
+  } else {
+    var ar = Array.ofDim[Int](n + 1);
+    ar(0) = 0;
+    ar(1) = 1;
+    for(k <- Range(2, n + 1)) {
+      ar(k) = ar(k - 1) + ar(k - 2);
+    }
+    return ar(n);
+  }
+}
+```
