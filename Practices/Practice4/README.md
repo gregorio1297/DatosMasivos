@@ -62,7 +62,7 @@ def fibonacci4(n: Int): Int = {
 }
 ```
 
-### Algorithm 5 Iterative 
+### Algorithm 5 Iterative using array
 ```scala
 def fibonacci5(n: Int): Int = {
   if(n < 2) {
