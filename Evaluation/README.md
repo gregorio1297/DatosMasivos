@@ -53,13 +53,31 @@ val df2 = df.withColumn("HV Ratio", df("High")/df("Volume"))
 ```
 
 ## 10. What is the maximum and minimum of the "Volume" column?
+```scala
+df.groupBy().max("Volume").show() //maximum
 
+df.groupBy().min("Volume").show() //minimum
+```
 
 ## 11. With Scala/Spark $ Syntax answer the following:
 
-//a.How many days was the "Close" column less than $600?
-//b.What percentage of the time was the "High" column greater than $500?
-//c.What is the Pearson correlation between the "High" column and the "Volume" column?
-//d.What is the maximum of the "High" column per year?
-//e.What is the average of "Close" column for each calendar month?
-
+### a.How many days was the "Close" column less than $600?
+```scala
+df.filter($"Close" < 600).count()
+```
+### b.What percentage of the time was the "High" column greater than $500?
+```scala
+(df.filter($"High" > 500).count().toFloat / df.count().toFloat) * 100
+```
+### c.What is the Pearson correlation between the "High" column and the "Volume" column?
+```scala
+df.select(corr("High", "Volume")).show()
+```
+### d.What is the maximum of the "High" column per year?
+```scala
+df.select("*").groupBy(year($"Date")).max("High").orderBy(year($"Date")).show()
+```
+### e.What is the average of "Close" column for each calendar month?
+```scala
+df.select("*").groupBy(month($"Date")).avg("Close").orderBy(month($"Date")).show()
+```
