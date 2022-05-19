@@ -22,6 +22,6 @@ val lsvcModel = lsvc.fit(training)
 ```
 
 Resultados
-![]()
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit2/Practices/Practice6/practice6_results.png)
 
 As we can see the result of the interception is 0.012.
