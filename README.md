@@ -10,4 +10,5 @@
   - [Practice 4](https://github.com/gregorio1297/DatosMasivos/tree/Unit2/Practices/Practice4)
   - [Practice 5](https://github.com/gregorio1297/DatosMasivos/tree/Unit2/Practices/Practice5)
   - [Practice 6](https://github.com/gregorio1297/DatosMasivos/tree/Unit2/Practices/Practice6)
-* Evaluation
+  - [Practice 7](https://github.com/gregorio1297/DatosMasivos/tree/Unit2/Practices/Practice7)
+* [Evaluation](https://github.com/gregorio1297/DatosMasivos/tree/Unit2/Evaluation)

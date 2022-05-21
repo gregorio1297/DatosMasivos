@@ -1,4 +1,4 @@
-# Practice 5 Unit 2
+# Practice 6 Unit 2
 # Linear Support Vector Machine
 
 We first import the library to use linear support vector machines.
