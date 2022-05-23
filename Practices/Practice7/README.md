@@ -28,8 +28,8 @@ val naiveBayesModel = new NaiveBayes().fit(trainingData)
 ```
 
 The model calls transform() to make predictions and generate a new DataFrame.
-![](https://github.com/gregorio1297/DatosMasivos/blob/Unit2/Practices/Practice7/P71.png)
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit2/Practices/Practice7/P71.PNG)
 
 Prediction results data output
-![](https://github.com/gregorio1297/DatosMasivos/blob/Unit2/Practices/Practice7/P72.png)
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit2/Practices/Practice7/P72.PNG)
 
