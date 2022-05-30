@@ -1,83 +1,71 @@
-# Evaluation - Unit 1
+# Evaluation Unit 3
+Develop the following instructions in Spark with the Scala programming language.
 
-Answer the following questions with Spark DataFrames and Scala using the "CSV" Netflix_2011_2016.csv found in the spark-dataframes folder.
+The objective of this practical test is to try to group customers in specific regions of a wholesale distributor. of a wholesale distributor. This is based on the sales of some product categories.
 
-## 1. Start a simple Spark session.
+The data source can be found in the repository:
+https://github.com/jcromerohdz/BigData/blob/master/Spark_clustering/Wholesale %20customers%20data.csv
+
+1. Import a single Spark session.
+
 ```scala
 import org.apache.spark.sql.SparkSession
+```
+2. Use lines of code to minimize errors.
 
+```scala
+import org.apache.log4j._
+Logger.getLogger("org").setLevel(Level.ERROR)
+```
+3. Create an instance of the Spark session.
+
+```scala
 val spark = SparkSession.builder().getOrCreate()
 ```
+4. Import the Kmeans library for the clustering algorithm.
 
-## 2. Load Netflix Stock CSV file, have Spark infer the data types.
 ```scala
-val df = spark.read.option("header", "true").option("inferSchema","true")csv("Netflix_2011_2016.csv")
+import org.apache.spark.ml.clustering.KMeans
 ```
+5. Load the Wholesale Customers Data dataset.
 
-## 3. What are the column names?
 ```scala
-df.columns
+val df = spark.read.option("header","true").option("inferSchema","true").csv("Wholesale customers data.csv")
 ```
+6. Select the following columns: Fresh, Milk, Grocery, Frozen, Detergents_Paper, Delicassen and call this feature_data set.
 
-## 4. What is the scheme like?
 ```scala
-df.printSchema()
+val feature_data = df.select($"Fresh", $"Milk", $"Grocery", $"Frozen", $"Detergents_Paper", $"Delicassen")
 ```
+7. Import Vector Assembler and Vector
 
-## 5. Prints the first 5 columns.
 ```scala
-df.select($"Date",$"Open",$"High",$"Low",$"Close").show()
+import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.linalg.Vectors
 ```
+8. Create a new Vector Assembler object for the columns of features as an input set, remembering not to input set, remembering that there are no labels.
 
-## 6. Use describe () to learn about the DataFrame.
 ```scala
-df.describe().show()
+val Vassembler = new VectorAssembler().setInputCols(Array("Fresh", "Milk", "Grocery", "Frozen","Detergents_Paper", "Delicassen")).setOutputCol("features")
 ```
+9. Use the assembler object to transform feature_data.
 
-## 7. Creates a new dataframe with a new column called "HV Ratio" which is the ratio between the price of the "High" column and the "Volume" column of shares traded for a day. traded for a day. Hint - is a operation
 ```scala
-val df2 = df.withColumn("HV Ratio", df("High")/df("Volume"))
+val dffeaturedata = Vassembler.transform(feature_data)
 ```
+10. Create a Kmeans model with K=3.
 
-## 8. Which day had the highest peak in the "Open" column?
 ```scala
- val dfday = df.withColumn("Day",dayofmonth(df("Date")))
- val dfdayop = dfday.groupBy("Day").max()
- dfdayop.show()
- dfdayop.select($"Day",$"max(Open)").show()
+val kmeans = new KMeans().setK(3).setSeed(1L)
+val model = kmeans.fit(dffeaturedata)
 ```
+11. Evaluate the groups using Within Set Sum of Squared Errors WSSSE and print the centroids.
 
-## 9. What is the meaning of the Close column in the context of financial reporting, explain it there is no coding required?
 ```scala
-//The Close column refers to the company action price at the end of the day's closing.
-```
+val WSSSE = model.computeCost(dffeaturedata)
+println(s"Within Set Sum of Squared Errors = $WSSSE")
 
-## 10. What is the maximum and minimum of the "Volume" column?
-```scala
-df.groupBy().max("Volume").show() //maximum
-
-df.groupBy().min("Volume").show() //minimum
-```
-
-## 11. With Scala/Spark $ Syntax answer the following:
-
-### a.How many days was the "Close" column less than $600?
-```scala
-df.filter($"Close" < 600).count()
-```
-### b.What percentage of the time was the "High" column greater than $500?
-```scala
-(df.filter($"High" > 500).count().toFloat / df.count().toFloat) * 100
-```
-### c.What is the Pearson correlation between the "High" column and the "Volume" column?
-```scala
-df.select(corr("High", "Volume")).show()
-```
-### d.What is the maximum of the "High" column per year?
-```scala
-df.select("*").groupBy(year($"Date")).max("High").orderBy(year($"Date")).show()
-```
-### e.What is the average of "Close" column for each calendar month?
-```scala
-df.select("*").groupBy(month($"Date")).avg("Close").orderBy(month($"Date")).show()
+// Shows the result.
+println("Cluster Centers: ")
+model.clusterCenters.foreach(println)
 ```
