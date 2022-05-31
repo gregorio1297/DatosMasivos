@@ -37,6 +37,9 @@ val df = spark.read.option("header","true").option("inferSchema","true").csv("Wh
 ```scala
 val feature_data = df.select($"Fresh", $"Milk", $"Grocery", $"Frozen", $"Detergents_Paper", $"Delicassen")
 ```
+
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit3/Evaluation/imgs/ev31.PNG)
+
 7. Import Vector Assembler and Vector
 
 ```scala
@@ -53,6 +56,9 @@ val Vassembler = new VectorAssembler().setInputCols(Array("Fresh", "Milk", "Groc
 ```scala
 val dffeaturedata = Vassembler.transform(feature_data)
 ```
+
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit3/Evaluation/imgs/ev32.PNG)
+
 10. Create a Kmeans model with K=3.
 
 ```scala
@@ -64,8 +70,14 @@ val model = kmeans.fit(dffeaturedata)
 ```scala
 val WSSSE = model.computeCost(dffeaturedata)
 println(s"Within Set Sum of Squared Errors = $WSSSE")
+```
 
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit3/Evaluation/imgs/ev33.PNG)
+
+```scala
 // Shows the result.
 println("Cluster Centers: ")
 model.clusterCenters.foreach(println)
 ```
+
+![](https://github.com/gregorio1297/DatosMasivos/blob/Unit3/Evaluation/imgs/ev34.PNG)
