@@ -51,6 +51,44 @@ It is an open source parallel processing platform that supports in-memory proces
 Scala combines functional and object-oriented programming in a concise, high-level language. Scala's static types help avoid bugs in complex applications, and its JVM and JavaScript runtimes allow you to build high-performance systems with easy access to huge library ecosystems.
 
 # Results
+
+## Linear vector machine
+| seed | accuracy (relative to 1.0) |
+| ------- | --------------------------------- |
+| 101     | 0.8913                            |
+| 102     | 0.8925                            |
+| 103     | 0.8929                            |
+| 104     | 0.8926                            |
+| 105     | 0.8896                            |
+| 106     | 0.8891                            |
+| 107     | 0.8888                            |
+| 108     | 0.8883                            |
+| 109     | 0.8894                            |
+| 110     | 0.8936                            |
+| 111     | 0.8898                            |
+| 112     | 0.8911                            |
+| 113     | 0.8918                            |
+| 114     | 0.8903                            |
+| 115     | 0.8869                            |
+| 116     | 0.8941                            |
+| 117     | 0.8907                            |
+| 118     | 0.8899                            |
+| 119     | 0.8930                            |
+| 120     | 0.8893                            |
+| 121     | 0.8930                            |
+| 122     | 0.8910                            |
+| 123     | 0.8909                            |
+| 124     | 0.8920                            |
+| 125     | 0.8940                            |
+| 126     | 0.8863                            |
+| 127     | 0.8899                            |
+| 128     | 0.8913                            |
+| 129     | 0.8898                            |
+| 130     | 0.8913                            |
+
+**mean: 0.8908**
+
+The SVM algorithm relies on taking to account every single feature defined in the data, at first this might seem like an advantage, but a consequence is that this can introduce variables that only make noise in the system, in the case of this particular dataset there are variables such as "contact" that describes if a client has a cellphone or telephone, this might not be releveant to the problem we are studying.
 # Conclusion
 
 # References
