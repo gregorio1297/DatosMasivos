@@ -89,6 +89,127 @@ Scala combines functional and object-oriented programming in a concise, high-lev
 **mean: 0.8908**
 
 The SVM algorithm relies on taking to account every single feature defined in the data, at first this might seem like an advantage, but a consequence is that this can introduce variables that only make noise in the system, in the case of this particular dataset there are variables such as "contact" that describes if a client has a cellphone or telephone, this might not be releveant to the problem we are studying.
+
+## Decision Tree
+| seed | accuracy (relative to 1.0) |
+| ------- | --------------------------------- |
+| 101     | 0.8903                            |
+| 102     | 0.8931                            |
+| 103     | 0.8855                            |
+| 104     | 0.8934                            |
+| 105     | 0.8908                            |
+| 106     | 0.8932                            |
+| 107     | 0.8882                            |
+| 108     | 0.8898                            |
+| 109     | 0.8920                            |
+| 110     | 0.8934                            |
+| 111     | 0.8904                            |
+| 112     | 0.8896                            |
+| 113     | 0.8919                            |
+| 114     | 0.8969                            |
+| 115     | 0.8902                            |
+| 116     | 0.8912                            |
+| 117     | 0.8912                            |
+| 118     | 0.8901                            |
+| 119     | 0.8892                            |
+| 120     | 0.8880                            |
+| 121     | 0.8903                            |
+| 122     | 0.8911                            |
+| 123     | 0.8952                            |
+| 124     | 0.8893                            |
+| 125     | 0.8915                            |
+| 126     | 0.8961                            |
+| 127     | 0.8892                            |
+| 128     | 0.8918                            |
+| 129     | 0.8934                            |
+| 130     | 0.8901                            |
+
+**mean: 0.8912**
+
+The decision tree shows us all the possible options to get to a desired target, in this case we have runs that show very similar accuracies, which shows this can be an effective model, but the design of the model can be a topic to think about at the moment of choosing this particular algorithm.
+
+## Logistic Regression
+| seed | accuracy(relative to 1.0) |
+| ------- | --------------------------------- |
+| 101     | 0.8921                            |
+| 102     | 0.8941                            |
+| 103     | 0.8947                            |
+| 104     | 0.8935                            |
+| 105     | 0.8927                            |
+| 106     | 0.8903                            |
+| 107     | 0.8895                            |
+| 108     | 0.8906                            |
+| 109     | 0.8904                            |
+| 110     | 0.8954                            |
+| 111     | 0.8907                            |
+| 112     | 0.8936                            |
+| 113     | 0.8929                            |
+| 114     | 0.8927                            |
+| 115     | 0.8893                            |
+| 116     | 0.8943                            |
+| 117     | 0.8915                            |
+| 118     | 0.8910                            |
+| 119     | 0.8931                            |
+| 120     | 0.8909                            |
+| 121     | 0.8912                            |
+| 122     | 0.8919                            |
+| 123     | 0.8926                            |
+| 124     | 0.8910                            |
+| 125     | 0.8966                            |
+| 126     | 0.8870                            |
+| 127     | 0.8921                            |
+| 128     | 0.8919                            |
+| 129     | 0.8924                            |
+| 130     | 0.8927                            |
+
+**mean:0.8921**
+
+Relative to the Linear Vector Machine Algorithm, the difference in accuracy is little, being less than 0.01, yet, in the implementation of SVM for spark there are more options to control the internals of the algorithm so that might be more desirable depending on the requirements one might have, at least in an empiric manner SVM seems faster when executing.
+
+## Multilayer Perceptron
+| seed | accuracy(relative to 1.0) |
+| ------- | --------------------------------- |
+| 101     | 0.8792                            |
+| 102     | 0.8858                            |
+| 103     | 0.8830                            |
+| 104     | 0.8847                            |
+| 105     | 0.8781                            |
+| 106     | 0.8844                            |
+| 107     | 0.8822                            |
+| 108     | 0.8811                            |
+| 109     | 0.8844                            |
+| 110     | 0.8853                            |
+| 111     | 0.8854                            |
+| 112     | 0.8807                            |
+| 113     | 0.8864                            |
+| 114     | 0.8852                            |
+| 115     | 0.8822                            |
+| 116     | 0.8806                            |
+| 117     | 0.8830                            |
+| 118     | 0.8810                            |
+| 119     | 0.8844                            |
+| 120     | 0.8831                            |
+| 121     | 0.8822                            |
+| 122     | 0.8818                            |
+| 123     | 0.8811                            |
+| 124     | 0.8812                            |
+| 125     | 0.8826                            |
+| 126     | 0.8838                            |
+| 127     | 0.8830                            |
+| 128     | 0.8847                            |
+| 129     | 0.8851                            |
+| 130     | 0.8855                            |
+
+**mean: 0.8830**
+
+MPC works in a more organized way, given that we have to specify which features we want to work with and make the architecture of the neural network ourselves, based on the amount of features and classifications for the input and output layer respectivelt. This is one of the fastest models to implement time-wise.
+
+|           | SVM    | Decision Three | L.Regression | MPerceptron |
+| --------- | ------ | -------------- | ------------ | ----------- |
+| Precisión | 0.8908 | 0.8912         | **0.8921**      | 0.8830      |
+
+**best algorithm in this test: Linear Regression with 0.8921**
+
 # Conclusion
 
 # References
