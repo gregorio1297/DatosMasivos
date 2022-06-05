@@ -52,8 +52,8 @@ Scala combines functional and object-oriented programming in a concise, high-lev
 
 # Results
 
-## Linear vector machine
-| seed | accuracy (relative to 1.0) |
+## Linear Vector Machine
+| seed | ccuracy (relative to 1.0) |
 | ------- | --------------------------------- |
 | 101     | 0.8913                            |
 | 102     | 0.8925                            |
@@ -208,9 +208,11 @@ MPC works in a more organized way, given that we have to specify which features 
 | --------- | ------ | -------------- | ------------ | ----------- |
 | Precisión | 0.8908 | 0.8912         | **0.8921**      | 0.8830      |
 
-**best algorithm in this test: Linear Regression with 0.8921**
+**best algorithm in this test: Logistic Regression with 0.8921**
 
 # Conclusion
+
+We observed that every algorithm tested achieves a similar accuracy relative to each other, but logistic regression wins, at least in this test with the seeds used, this given that it has the best accuracy out of the 4, as a comment, we suggest that this result might vary depending on the specific dataset and the specifics of said dataset, one algorithm might work better for one dataset and worst for another one. Also, the simplicity of implementing an algorithm might intervene when choosing one over another, for example, the multilayer perceptron was the easiest to make for us. Finally, each model has its own advantages and disadvantages, but if we had to choose one, we would choose logistic regression, first for the results it gave us, and secondly because its easy to implement.
 
 # References
 * BETANCOURT, G. . A. . (2005). LAS MÁQUINAS DE SOPORTE VECTORIAL (SVMs). Scientia Et Technica, 1(27). https://doi.org/10.22517/23447214.6895 
