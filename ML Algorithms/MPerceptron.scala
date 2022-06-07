@@ -31,11 +31,7 @@ val test = splits(1)
 val layers = Array[Int](4, 5, 4, 2)
 
 // create the trainer and set its parameters
-val trainer = new MultilayerPerceptronClassifier()
- .setLayers(layers)
- .setBlockSize(128)
- .setSeed(1234L)
- .setMaxIter(100)
+val trainer = new MultilayerPerceptronClassifier().setLayers(layers).setBlockSize(128).setSeed(1234L).setMaxIter(100)
 
 // train the model
 val model = trainer.fit(train)
@@ -50,6 +46,6 @@ println(s"seed: $i, Test set accuracy = ${evaluator.evaluate(predictionAndLabels
 
 //show the distribution of the data used
 println(s"train: ${train.count}, test: ${test.count()}")
-show the table true value vs prediction
+//show the table true value vs prediction
 result.select("features", "label", "prediction").show(test.count().asInstanceOf[Int])
 }
