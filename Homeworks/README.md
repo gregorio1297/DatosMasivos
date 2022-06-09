@@ -1,2 +1,0 @@
-# Homeworks - Unit 1
-
